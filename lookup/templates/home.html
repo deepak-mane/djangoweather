@@ -10,27 +10,22 @@
 	{% if api == "Error..." %}
 		There was an error, please try again...
 	{% else %}
-<div class="jumbotron {{ category_color }}">
-	<h1 class="display-4">{{ api.0.Category.Name }} </h1>
-	<p class="lead">Current {{ api.0.ReportingArea }} Air Quality : {{ api.0.AQI }}</p>
-
-	{{ category_description }}
-
-
-
-
-
-
-	<!--
-		Area : {{ api.0.ReportingArea }}<br/>
-		Category : {{ api.0.Category.Name }}<br/>
-		ParameterName : {{ api.0.ParameterName }}<br/>
-		Date : {{ api.0.DateObserved }}<br/>
-		HourObserved : {{ api.0.HourObserved }}<br/>
-		TimeZone: {{ api.0.LocalTimeZone }}<br/>
-	-->
+		<div class="jumbotron {{ category_color }}">
+			<h1 class="display-4">{{ api.0.Category.Name }} </h1>
+			<p class="lead">Current {{ api.0.ReportingArea }} Air Quality : {{ api.0.AQI }}</p>
+			<!-- <p class="lead">Area : {{ api.0 }} </p> -->
+			{{ category_description }}
+			<!--
+				Area : {{ api.0.ReportingArea }}<br/>
+				Category : {{ api.0.Category.Name }}<br/>
+				ParameterName : {{ api.0.ParameterName }}<br/>
+				Date : {{ api.0.DateObserved }}<br/>
+				HourObserved : {{ api.0.HourObserved }}<br/>
+				TimeZone: {{ api.0.LocalTimeZone }}<br/>
+			-->
+		</div>
 	{% endif %}
-</div>
+
 {% endif %}
 
 

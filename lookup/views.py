@@ -1,17 +1,12 @@
 from django.shortcuts import render
-
-# Create your views here.
-#http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=97003&distance=5&API_KEY=66D6C193-D931-4377-802A-8B2BC7F329CE
+# Create your views here. #http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=97003&distance=5&API_KEY=66D6C193-D931-4377-802A-8B2BC7F329CE
 def home(request):
+	import json	
 	import requests
-	import json
 
 	if request.method == "POST":
-		zipcode = request.POST['zipcode'];
-		return render(request, 'home.html', {'zipcode': zipcode})
-
-	else:
-		api_request = requests.get("http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=97003&distance=50&API_KEY=66D6C193-D931-4377-802A-8B2BC7F329CE")
+		zipcode = request.POST['zipcode']
+		api_request = requests.get("http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=" + zipcode + "&distance=50&API_KEY=66D6C193-D931-4377-802A-8B2BC7F329CE")
 
 		try:
 			api = json.loads(api_request .content)
@@ -42,6 +37,10 @@ def home(request):
 			'category_description': category_description,
 			'category_color': category_color
 			})
+
+	else:
+		pass #api_request = requests.get("http://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=97003&distance=50&API_KEY=66D6C193-D931-4377-802A-8B2BC7F329CE")
+
 
 def about(request):
 	return render(request, 'about.html', {})
